@@ -5,20 +5,24 @@ function DeleteButton(props) {
   const { uid } = props;
 
   async function handleOnClick() {
-    await fetch(`http://localhost:3002/users/delete/${uid}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        console.log(res);
+    if (confirm("Delete User?")) {
+      await fetch(`http://localhost:3002/users/delete/${uid}`, {
+        method: "DELETE",
       })
-      .catch((err) => {
-        console.error(err);
-      });
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }
 
   return (
     <div>
-      <button className="deleteButton" onClick={() => handleOnClick()}>Delete</button>
+      <button className="deleteButton" onClick={() => handleOnClick()}>
+        Delete
+      </button>
     </div>
   );
 }

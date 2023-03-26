@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./GenerateTable.css";
+import "./UserTable.css";
 
 import DeleteButton from "../DeleteButton";
 
-function GenerateTable() {
+function UserTable() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,6 @@ function GenerateTable() {
     await axios
       .get("http://localhost:3002/users/all")
       .then((res) => {
-        console.log(res.data);
         setUsers(res.data);
       })
       .catch((err) => {
@@ -40,7 +39,7 @@ function GenerateTable() {
               <td>{user.uid}</td>
               <td>{user.email}</td>
               <td>{user.metadata.creationTime}</td>
-              <td>{user.metadata.lastSignIn}</td>
+              <td>{user.metadata.lastSignInTime}</td>
               <td>
                 <DeleteButton uid={user.uid} />
               </td>
@@ -52,4 +51,4 @@ function GenerateTable() {
   );
 }
 
-export default GenerateTable;
+export default UserTable;

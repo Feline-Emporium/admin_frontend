@@ -1,14 +1,20 @@
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import "./App.css";
 
-import GenerateTable from "./components/GenerateTable";
+import HomePage from "./components/HomePage";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   return (
-    <div className="App">
-      <h2>OneStop CatShop Admin</h2>
-      <h3>Users</h3>
-      <GenerateTable />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+        {/*   <Route path="*" element={<ErrorPage />} /> */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
