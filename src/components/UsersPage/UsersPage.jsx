@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./UserTable.css";
+import "./UsersPage.css";
 
 import DeleteButton from "../DeleteButton";
 
-function UserTable() {
+function UsersPage() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("JWT_TOKEN"));
 
   useEffect(() => {
-    if (token === null) {
-      navigate("/login");
-    } else {
-      getUsers();
-    }
+    getUsers();
   }, []);
 
   async function getUsers() {
@@ -68,4 +64,4 @@ function UserTable() {
   );
 }
 
-export default UserTable;
+export default UsersPage;

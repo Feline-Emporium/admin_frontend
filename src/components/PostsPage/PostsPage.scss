@@ -1,0 +1,77 @@
+.cat-list-page {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1rem;
+  padding-top: 15%;
+
+  .cat-row {
+    display: table-row;
+
+    &:nth-child(even) {
+      background-color: gray;
+    }
+
+    &:hover {
+      background-color: gray;
+    }
+
+    .cat-card {
+      display: table-cell;
+      vertical-align: top;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: white;
+      box-shadow: 0 0 1rem rgba(black, 0.1);
+      position: relative;
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      &:hover {
+        box-shadow: 0 0 2rem rgba(black, 0.2);
+      }
+
+      .cat-details {
+        text-align: center;
+
+        h3 {
+          margin-top: 0;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
+
+          &:last-child {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+      .delete-button {
+        opacity: 0.9;
+
+        background-color: red;
+        color: white;
+        border-radius: 0.5rem;
+        border: none;
+        padding: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        position: absolute;
+        margin-top: 5%;
+        bottom: 0;
+        right: 0;
+        margin: 0.5rem;
+
+        &:hover {
+          background-color: darkred;
+        }
+      }
+    }
+  }
+}

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Typography, TextField, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   const handleSubmit = async () => {
+    setDisabled(true);
     await axios
       .post("http://localhost:3002/login", {
         username: username,
@@ -19,6 +23,7 @@ export default function LoginPage() {
           return;
         } else {
           localStorage.setItem("JWT_TOKEN", res.data);
+          navigate("/");
         }
       })
       .catch((err) => {
@@ -51,6 +56,7 @@ export default function LoginPage() {
         <Button
           variant="contained"
           className="formButton"
+          disabled={disabled}
           onClick={() => handleSubmit()}
         >
           Log in
