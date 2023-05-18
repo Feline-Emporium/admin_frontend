@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./UsersPage.css";
 
 import DeleteButton from "../DeleteButton";
+import BackButton from "../BackButton";
 
 function UsersPage() {
-  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("JWT_TOKEN"));
 
   useEffect(() => {
-    getUsers();
+    getAllUsers();
   }, []);
 
-  async function getUsers() {
+  async function getAllUsers() {
     await axios
-      .post(
-        "http://localhost:3002/users/all",
-        {
+      .post("http://localhost:3002/users/all", {
+        headers: {
           JWT_TOKEN: token,
         },
-        {
-          headers: {
-            JWT_TOKEN: token,
-          },
-        }
-      )
+      })
       .then((res) => {
         setUsers(res.data);
       })
@@ -36,6 +29,8 @@ function UsersPage() {
   }
   return (
     <div>
+      <h1>Users</h1>
+      <BackButton />
       <table>
         <thead>
           <tr>

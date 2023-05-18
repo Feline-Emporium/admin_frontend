@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
+import UsersPage from "../UsersPage";
+import PostsPage from "../PostsPage/PostsPage";
+
 function App() {
   return (
     <div className="App">

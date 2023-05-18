@@ -14,7 +14,6 @@ function App() {
           {/*   <Route path="*" element={<ErrorPage />} /> */}
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/users" element={<HomePage />} />
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/users" element={<UsersPage />} />
         </Routes>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./PostsPage.scss";
 
+import BackButton from "../BackButton";
+
 function PostsPage() {
   const [cats, setCats] = useState([]);
 
@@ -42,7 +44,13 @@ function PostsPage() {
     );
   }
 
-  return <div className="cat-list-page">{rows}</div>;
+  return (
+    <div>
+      <h1>Posts</h1>
+      <BackButton />
+      <div className="cat-list-page">{rows}</div>;
+    </div>
+  );
 }
 
 export default PostsPage;
